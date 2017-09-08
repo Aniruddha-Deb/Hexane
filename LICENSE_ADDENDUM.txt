@@ -1,0 +1,36 @@
+TERMS AND CONDITIONS
+0. Definitions
+
+The definitions used in the GNU GPLv3 also apply here.
+
+"This software" or "The software" is the same as "The program", the definition of which is provided with the GNU GPLv3.
+
+"Developer" refers to an individual who writes software to be used with the software.
+
+"developer(s) of the software" refers to any individual(s) who is/are associated with the development of the software.
+
+"The license" is the same as "This License", the definition of which is provided with the GNU GPLv3.
+
+"Installation directory" refers to the directory in which all the files that are required for the working of the software are present. 
+
+"Plugin" is defined as a piece of software that is not provided with the software at the time of distribution and is added on by the user.
+
+"Plugins" is defined as the plural form of Plugin.
+
+"Plugins directory" refers to the directory set up by the user in which the plugins must be put, so as to be read and used by the software.
+
+ADDENDUM TO THE LICENSE OF THE SOFTWARE
+1. Conditions relating to Plugins
+
+All plugins that are used in conjunction with the software are intellectual property of their respective owners and DO NOT come under the license unless specified in section 1.1. 
+
+Conditions relating to plugins that have a license are described in section 1.2.
+
+1.1. Conditions relating to plugins without a license
+Plugins which are not supplied with a license come under the license of this software. For the plugin to be eligible to come under the license, the plugin must reside within the Plugins directory. 
+
+ANY PLUGIN THAT DOES NOT HAVE A LICENSE AND DOES NOT RESIDE WITHIN THE PLUGINS DIRECTORY DOES NOT COME UNDER THE LICENSE AND THE SOFTWARE OR THE DEVELOPER(S) OF THE SOFTWARE ARE NOT LIABLE FOR INTELLECTUAL PROPERTY THEFT IN SUCH AN EVENT.
+
+1.2. Conditions relating to plugins with a license
+If a plugin has a license, the plugin comes under the license supplied by the 
+developer of the plugin.
