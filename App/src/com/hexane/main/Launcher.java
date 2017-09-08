@@ -1,5 +1,7 @@
 package com.hexane.main;
 
+import com.hexane.main.ui.controller.Controller;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -14,8 +16,16 @@ public class Launcher extends Application {
 
 	@Override
 	public void start( Stage primaryStage ) throws Exception {
-        AnchorPane rootLayout = (AnchorPane)FXMLLoader.load( getClass().getResource( "ui/view/MainView.fxml" ) );
+		
+		Controller controller = new Controller( primaryStage );
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation( getClass().getResource( "/views/MainView.fxml" ) );
+		loader.setController( controller );
+		
+		AnchorPane rootLayout = (AnchorPane)loader.load();
+		System.out.println( rootLayout );
 		Scene s = new Scene( rootLayout );
+		 
 		primaryStage.setScene( s );
 		primaryStage.setTitle( "Hello Hexane" );
 		primaryStage.show();
