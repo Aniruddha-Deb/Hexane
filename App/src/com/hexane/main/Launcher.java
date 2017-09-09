@@ -23,7 +23,6 @@ public class Launcher extends Application {
 		loader.setController( controller );
 		
 		AnchorPane rootLayout = (AnchorPane)loader.load();
-		System.out.println( rootLayout );
 		Scene s = new Scene( rootLayout );
 		 
 		primaryStage.setScene( s );
