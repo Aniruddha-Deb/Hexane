@@ -7,7 +7,7 @@ import javafx.scene.control.Slider;
 import javafx.scene.control.ToolBar;
 import javafx.stage.Stage;
 
-public class Controller {
+public class Controller{	
 	
 	@FXML
 	public ProgressBar progressBar;
@@ -34,5 +34,9 @@ public class Controller {
 		zoomLabel.setText( "100%" );
 		infoLabel.setText( "Open a file to get started" );
 		progressBar.setProgress( 0.2 );
+	}
+	
+	public Stage getPrimaryStage(){
+		return primaryStage;
 	}
 }
