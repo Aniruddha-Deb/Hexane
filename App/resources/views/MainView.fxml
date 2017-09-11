@@ -7,7 +7,6 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ProgressBar?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.SplitPane?>
@@ -29,26 +28,23 @@
                   <Menu mnemonicParsing="false" text="File">
                     <items>
                         <MenuItem mnemonicParsing="false" text="New" />
-                        <MenuItem mnemonicParsing="false" onAction="#openFile" text="Open" />
+                        <Menu mnemonicParsing="false" text="Open">
+                          <items>
+                              <MenuItem mnemonicParsing="false" onAction="#openFile" text="File" />
+                            <MenuItem mnemonicParsing="false" onAction="#openFolder" text="Folder" />
+                          </items>
+                        </Menu>
                         <MenuItem mnemonicParsing="false" onAction="#saveFile" text="Save" />
                     </items>
                   </Menu>
                </menus>
             </MenuBar>
             <ToolBar prefHeight="30.0" prefWidth="1200.0" VBox.vgrow="NEVER" />
-            <SplitPane dividerPositions="0.09265442404006678" prefHeight="160.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+            <SplitPane dividerPositions="0.20868113522537562" prefHeight="160.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
               <items>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                <AnchorPane fx:id="splitPaneLeftAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                      <children>
-                        <ScrollPane layoutX="-29.0" layoutY="93.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                           <content>
-                              <AnchorPane prefHeight="665.0" prefWidth="104.0">
-                                 <children>
-                                    <TreeView layoutX="-55.0" layoutY="21.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                 </children>
-                              </AnchorPane>
-                           </content>
-                        </ScrollPane>
+                        <TreeView fx:id="fileView" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                      </children>
                   </AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
