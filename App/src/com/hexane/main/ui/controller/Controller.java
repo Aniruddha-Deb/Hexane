@@ -1,7 +1,13 @@
 package com.hexane.main.ui.controller;
 
 import java.io.File;
+import java.nio.file.Path;
 
+import com.hexane.main.core.data.InstructionList;
+import com.hexane.main.core.io.HexaneFileReader;
+import com.hexane.main.core.visual.CanvasManager;
+import com.hexane.main.ui.components.FileTab;
+import com.hexane.main.ui.controller.fileviewer.FilePathTreeItem;
 import com.hexane.main.ui.controller.fileviewer.FileViewer;
 
 import javafx.event.ActionEvent;
@@ -10,8 +16,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.Slider;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.ToolBar;
 import javafx.scene.control.TreeView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -34,6 +42,8 @@ public class Controller{
 	public MenuBar menuBar;	
 	@FXML
 	public TreeView<String> fileView;
+	@FXML
+	public TabPane fileTabPane;
 	
 	private Stage primaryStage = null;
 	private FileChooser fileChooser = null;
@@ -64,12 +74,30 @@ public class Controller{
 	}
 	
 	@FXML
+	public void onTreeViewClick( MouseEvent e ) {
+		if( e.getClickCount() == 2 ) {
+			FilePathTreeItem fpti = (FilePathTreeItem)
+							fileView.getSelectionModel().getSelectedItem();
+			displayFile( fpti.getPath() );
+		}
+	}
+	
+	@FXML
 	public void openFile( ActionEvent e ) {
 		File file = fileChooser.showOpenDialog( primaryStage );
+		displayFile( file.toPath() );
 		if( file != null ) {
 			fileViewer.displayFile( file );
 		}
 	}	
+	
+	private void displayFile( Path p ) {
+		FileTab ft = new FileTab( p.getFileName().toString(), fileTabPane );
+		InstructionList il = HexaneFileReader.getInstructionList( p );
+		CanvasManager cm = new CanvasManager( ft.getCanvas() );
+		cm.draw( il );
+		fileTabPane.getTabs().add( ft );
+	}
 	
 	@FXML
 	public void openFolder( ActionEvent e ) {

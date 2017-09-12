@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.attribute.BasicFileAttributes;
 
 import javafx.event.Event;
 import javafx.scene.control.TreeItem;
@@ -17,18 +15,16 @@ public class FilePathTreeItem extends TreeItem<String>{
 	public static Image folderImage = new Image(  
 		FilePathTreeItem.class.getResource( "/icons/folder.png" ).toExternalForm() );
 	public static Image folderOpenImage = new Image(  
-			FilePathTreeItem.class.getResource( "/icons/folder-open.png" ).toExternalForm() );
+		FilePathTreeItem.class.getResource( "/icons/folder-open.png" ).toExternalForm() );
 	public static Image fileImage = new Image(  
-			FilePathTreeItem.class.getResource( "/icons/file.png" ).toExternalForm() );;
+		FilePathTreeItem.class.getResource( "/icons/file.png" ).toExternalForm() );
 			
-	private String fullyQualifiedPath = null;
 	private Path path = null;
 	private boolean directory = false;
 	
 	public FilePathTreeItem( Path path ) {
 		super( path.toString() );
 		this.path = path;
-		fullyQualifiedPath = path.toString();
 		
 		if( Files.isDirectory( path ) ) {
 			directory = true;
@@ -47,36 +43,21 @@ public class FilePathTreeItem extends TreeItem<String>{
 	
 	private void handleBranchExpandedEvent( Event e ) {
 		
-        FilePathTreeItem source=(FilePathTreeItem)e.getSource();
+        FilePathTreeItem source = (FilePathTreeItem)e.getSource();
         
-        if(source.isDirectory()&&source.isExpanded()){
-          ImageView iv=(ImageView)source.getGraphic();
+        if( source.directory && source.isExpanded() ) {
+          ImageView iv = (ImageView)source.getGraphic();
           iv.setImage( folderOpenImage );
-        }
-        try{
-          if(source.getChildren().isEmpty()){
-            Path path=Paths.get(source.getFullyQualifiedPath());
-            BasicFileAttributes attribs=Files.readAttributes(path,BasicFileAttributes.class);
-            if(attribs.isDirectory()){
-              DirectoryStream<Path> dir=Files.newDirectoryStream(path);
-              for(Path file:dir){
-                FilePathTreeItem treeNode=new FilePathTreeItem(file);
-                source.getChildren().add(treeNode);
-              }
-            }
-          }else{
-            //if you want to implement rescanning a directory for changes this would be the place to do it
-          }
-        }catch(IOException x){
-          x.printStackTrace();
-        }
+        }        
 	}
 	
 	private void handleBranchCollapsedEvent( Event e ) {
-		FilePathTreeItem source=(FilePathTreeItem)e.getSource();
-        if(source.isDirectory()&&!source.isExpanded()){
-          ImageView iv=(ImageView)source.getGraphic();
-          iv.setImage( folderImage );
+		
+		FilePathTreeItem source = (FilePathTreeItem)e.getSource();
+		
+        if( source.directory && !source.isExpanded() ){
+		    ImageView iv = (ImageView)source.getGraphic();
+		    iv.setImage( folderImage );
         }
 	}
 	
@@ -97,13 +78,9 @@ public class FilePathTreeItem extends TreeItem<String>{
 			ex.printStackTrace();
 		}
 		return fpti;
-	}
+	}	
 	
-	public String getFullyQualifiedPath(){
-		return fullyQualifiedPath;
-	}
-	
-	public boolean isDirectory(){
-		return directory;
+	public Path getPath(){
+		return path;
 	}
 }
