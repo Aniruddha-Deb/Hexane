@@ -1,6 +1,6 @@
-package com.hexane.main.core.visual;
+package com.hexane.main.graphics;
 
-import com.hexane.main.core.data.InstructionList;
+import com.hexane.main.data.InstructionList;
 
 import javafx.scene.canvas.Canvas;
 

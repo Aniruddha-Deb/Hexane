@@ -3,9 +3,9 @@ package com.hexane.main.ui.controller;
 import java.io.File;
 import java.nio.file.Path;
 
-import com.hexane.main.core.data.InstructionList;
-import com.hexane.main.core.io.HexaneFileReader;
-import com.hexane.main.core.visual.CanvasManager;
+import com.hexane.main.data.InstructionList;
+import com.hexane.main.graphics.CanvasManager;
+import com.hexane.main.io.HexaneFileReader;
 import com.hexane.main.ui.components.FileTab;
 import com.hexane.main.ui.controller.fileviewer.FilePathTreeItem;
 import com.hexane.main.ui.controller.fileviewer.FileViewer;

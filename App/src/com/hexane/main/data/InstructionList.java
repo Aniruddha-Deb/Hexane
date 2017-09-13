@@ -1,4 +1,4 @@
-package com.hexane.main.core.data;
+package com.hexane.main.data;
 
 import java.util.ArrayList;
 
