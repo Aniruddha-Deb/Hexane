@@ -3,9 +3,6 @@ package com.hexane.main.ui.controller;
 import java.io.File;
 import java.nio.file.Path;
 
-import com.hexane.main.data.InstructionList;
-import com.hexane.main.graphics.CanvasManager;
-import com.hexane.main.io.HexaneFileReader;
 import com.hexane.main.ui.components.FileTab;
 import com.hexane.main.ui.controller.fileviewer.FilePathTreeItem;
 import com.hexane.main.ui.controller.fileviewer.FileViewer;
@@ -93,9 +90,7 @@ public class Controller{
 	
 	private void displayFile( Path p ) {
 		FileTab ft = new FileTab( p.getFileName().toString(), fileTabPane );
-		InstructionList il = HexaneFileReader.getInstructionList( p );
-		CanvasManager cm = new CanvasManager( ft.getCanvas() );
-		cm.draw( il );
+		// TODO read file and render on canvas
 		fileTabPane.getTabs().add( ft );
 	}
 	

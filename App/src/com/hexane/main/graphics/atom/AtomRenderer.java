@@ -1,23 +1,20 @@
 package com.hexane.main.graphics.atom;
 
-import com.hexane.main.graphics.atom.data.AtomRenderData;
+import com.hexane.main.core.atom.Atom;
 
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
 
 public class AtomRenderer {
 
 	private GraphicsContext g = null;
+	private Atom atom = null;
 	
-	public AtomRenderer( GraphicsContext g ) {
+	public AtomRenderer( Atom atom, GraphicsContext g ) {
 		this.g = g;
+		this.atom = atom;
 	}
-	
-	public void render( AtomRenderData data ) {
-		g.setFill( Color.BLACK );
-		g.setFont( new Font( "Helvetica", 16 ) );
-		g.fillText( data.getName(), data.getCoordinates().getX(), data.getCoordinates().getX() );
+
+	public void render() {
+		// TODO render atom using g.
 	}
-	
 }
